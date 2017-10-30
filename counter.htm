@@ -11,7 +11,7 @@
 	<script>
 		
 		var start = Date.now();
-		start += 15*1000;
+		start += 5*60*1000;
 
 		function combienResteTIl() {
 			var now = Date.now();
@@ -20,7 +20,11 @@
 				clearInterval(monInterval);
 				document.getElementById('tempsRestant').innerHTML = 'compteur à 0';
 			} else {
-				document.getElementById('tempsRestant').innerHTML = diff;
+				minutes = Math.floor(diff/1000/60);
+				secondes = Math.floor(diff/1000-minutes*60);
+				ms = Math.round((diff/1000-minutes*60-secondes)*1000);
+
+				document.getElementById('tempsRestant').innerHTML = minutes+"mn "+secondes+'s '+ms+'ms';
 			}
 		}
 
