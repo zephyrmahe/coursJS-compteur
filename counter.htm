@@ -6,12 +6,25 @@
 	</head>
 	<body>
 		
+	<p id="tempsRestant"></p>
 
 	<script>
 		
 		var start = Date.now();
-		console.log(start);
-		start += 5*60*1000;
+		start += 15*1000;
+
+		function combienResteTIl() {
+			var now = Date.now();
+			var diff = start-now;
+			if ( diff < 0 ) {
+				clearInterval(monInterval);
+				document.getElementById('tempsRestant').innerHTML = 'compteur à 0';
+			} else {
+				document.getElementById('tempsRestant').innerHTML = diff;
+			}
+		}
+
+		var monInterval = setInterval(combienResteTIl, 10);
 
 	</script>
 
